@@ -1,0 +1,11 @@
+digraph h {
+aaadc[label="5"]
+aaadd[label="10"]
+aabaa[label="6"]
+aabad[label="8"]
+aabba[label="9"]
+aaadc->aaadd
+aaadc->aabaa
+aabaa->aabad
+aabaa->aabba
+}

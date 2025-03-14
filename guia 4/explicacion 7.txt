@@ -1,0 +1,17 @@
+Voy a explicar cada parte del código:
+
+void subK(set<int>&S,set<int>::iterator itS, int k, list<set<int>>&L ,set<int> s): Esta es la función recursiva que genera los subconjuntos. Toma como argumentos el conjunto S, un iterador itS que indica la posición actual en el conjunto, el tamaño k de los subconjuntos que queremos generar, una lista L donde se almacenan los subconjuntos generados y un conjunto s que representa el subconjunto actual en construcción.
+
+if(s.size() == k): Esta condición verifica si el tamaño del subconjunto s es igual a k. Si lo es, significa que hemos construido un subconjunto del tamaño deseado y lo añadimos a la lista L.
+
+if(itS == S.end()): Esta condición verifica si el iterador itS ha llegado al final del conjunto S. Si es así, simplemente retornamos, ya que no hay más elementos para considerar en S.
+
+set<int> s_sin = s; y set<int> s_con = s;: Creamos dos copias del conjunto s para poder continuar construyendo el subconjunto sin incluir el elemento actual (s_sin) y para construir el subconjunto incluyendo el elemento actual (s_con).
+
+s_con.insert(*itS);: Insertamos el elemento actual (apuntado por itS) en el conjunto s_con, ya que estamos considerando incluirlo en el subconjunto.
+
+subK(S, next(itS), k, L, s_sin); y subK(S, next(itS), k, L, s_con);: Llamamos a la función subK recursivamente para continuar construyendo los subconjuntos, una vez sin incluir el elemento actual (s_sin) y otra vez incluyendo el elemento actual (s_con). next(itS) mueve el iterador al siguiente elemento en el conjunto S.
+
+list<set<int>> subK(set<int> &S, int k): Esta es la función de envoltura que inicializa el conjunto s y llama a la función subK recursiva.
+
+Finalmente, la función subK devuelve la lista L que contiene todos los subconjuntos generados.
